@@ -1,0 +1,42 @@
+[
+ {
+  "id": "2026-11-06_s09_v3",
+  "date": "2026-11-06",
+  "scene": "S09",
+  "version": "v3",
+  "platform": "Quest 3",
+  "pkg": "com.threedar.opiseraphine.v3",
+  "file": "2026-11-06_OPI_Seraphine_S09_v3.apk",
+  "size_mb": 69.8,
+  "title_en": "Opi Seraphine v3: S09 turntable splat set, lamp on, vapor edges, Seraphine idling, VR / passthrough switch",
+  "title_es": "Opi Seraphine v3: set de S09 en splat desde el turntable, lámpara prendida, bordes de vapor, Seraphine en idle y cambio VR / pass-through",
+  "desc_en": "One splat buffer for the headset: Seraphine (70,560 splats, skinned, 5 s idle), a 48-splat lamp halo over the table and the S09 set scanned from a 360 turntable of the painting (105,860 splats). The vapor is the same formula as the web viewer. 1:4 diorama on a plinth. New in every OPI build: switch between full VR and passthrough, with a room dimmer.",
+  "desc_es": "Un solo buffer de splats para el casco: Seraphine (70.560 splats, con skinning, idle de 5 s), un halo de lámpara de 48 splats sobre la mesa y el set de S09 escaneado desde un turntable 360 de la pintura (105.860 splats). El vapor es la misma fórmula que el visor web. Diorama 1:4 sobre un pedestal. Nuevo en todos los builds de OPI: cambio entre VR completo y pass-through, con atenuador de la sala.",
+  "items_en": [
+   "Starts in full VR with the lamp on.",
+   "Right B: full VR / passthrough. Right A (in passthrough): room dimmer 0, 30, 60, 85%.",
+   "Wrist menu: Reality (Full VR / Passthrough), Room dimmer (- / +), vapor, lamp halo, set budget, Seraphine idle/pause/hide.",
+   "176,468 splats in total."
+  ],
+  "items_es": [
+   "Arranca en VR completo con la lámpara prendida.",
+   "B derecho: VR completo / pass-through. A derecho (en pass-through): atenuador de la sala 0, 30, 60, 85 %.",
+   "Menú de muñeca: Realidad (Full VR / Passthrough), Atenuar sala (- / +), vapor, halo de lámpara, presupuesto del set, Seraphine idle/pausa/ocultar.",
+   "176.468 splats en total."
+  ],
+  "issues_en": [
+   "Seraphine's face, hair and hands are being refined for the next build.",
+   "The set edges will dissolve into scan-style streaks in the next build.",
+   "A walk-in with the cake is coming in the next build."
+  ],
+  "issues_es": [
+   "La cara, el pelo y las manos de Seraphine se están refinando para el próximo build.",
+   "En el próximo build los bordes del set se van a desarmar en trazos tipo scan.",
+   "En el próximo build viene la entrada caminando con la torta."
+  ],
+  "install_en": "Install with the hub button (WebUSB) or adb install -r -g.",
+  "install_es": "Instalar en el casco con el botón del hub (WebUSB) o con adb install -r -g.",
+  "url": "apk/2026-11-06_OPI_Seraphine_S09_v3.apk",
+  "thumb": "thumbs/2026-11-06_s09_v3.jpg"
+ }
+]

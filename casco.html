@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ver en casco · OPI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#07080a; --surface:#0f1114; --surface-2:#171a1f; --ink:#f3f1ec; --ink-2:#c4c8cf; --mute:#8b919b; --line:#272b32; --line-2:#1c1f25;
+  --amber:#f4a340; --ok:#8fcb86; --bad:#f08a80;
+  --ui:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--ui);margin:0;-webkit-font-smoothing:antialiased}
+main{max-width:640px;margin:0 auto;padding:40px 16px 64px}
+a{color:var(--amber)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:28px}
+.back{color:var(--mute);text-decoration:none;font-size:13px}
+.back:hover{color:var(--ink)}
+.langs{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.langs button{border:0;background:none;color:var(--mute);font:500 12px var(--ui);padding:4px 10px;cursor:pointer}
+.langs button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.eyebrow{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0 0 8px}
+h1{font-weight:400;font-size:30px;line-height:1.15;letter-spacing:-.01em;margin:0 0 6px;text-wrap:balance}
+.meta{color:var(--mute);font:13px var(--mono);margin:0 0 28px}
+ol.steps{list-style:none;counter-reset:s;margin:0 0 28px;padding:0;border-top:1px solid var(--line-2)}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:8px;padding:12px 0;border-bottom:1px solid var(--line-2);color:var(--ink-2)}
+ol.steps li::before{content:counter(s,decimal-leading-zero);font:500 12px/1.9 var(--mono);color:var(--amber)}
+ol.steps b{color:var(--ink);font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:9px 16px;font:500 14px var(--ui);cursor:pointer;text-decoration:none}
+.btn:hover{border-color:var(--ink-2)}
+.btn.amber{background:var(--amber);border-color:var(--amber);color:#1a1206;font-weight:600;padding:12px 22px;font-size:15px}
+.btn.amber:hover{filter:brightness(1.06)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.sub{font-size:13px;color:var(--mute)}
+.panel{margin-top:24px;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.lbl{display:flex;justify-content:space-between;font:12px var(--mono);color:var(--mute);margin-bottom:6px}
+.bar{height:6px;border-radius:3px;background:var(--surface-2);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--amber);transition:width .2s linear}
+.bar.done i{background:var(--ok)}
+.bar.ind i{width:30%;animation:ind 1.2s ease-in-out infinite}
+@keyframes ind{0%{transform:translateX(-100%)}100%{transform:translateX(340%)}}
+.prog+.prog{margin-top:14px}
+#status{margin-top:16px;font-size:15px;color:var(--ink);white-space:pre-wrap;min-height:1.5em}
+#status.ok{color:var(--ok)} #status.bad{color:var(--bad)}
+.note{margin-top:28px;font-size:13px;color:var(--mute);max-width:60ch}
+.fallback p{color:var(--ink-2)}
+.fallback .inst{font-size:13px;color:var(--mute)}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <a class="back" href="./" data-t="back"></a>
+    <div class="langs" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="false">ES</button><button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+  <p class="eyebrow" data-t="eyebrow"></p>
+  <h1 id="title">…</h1>
+  <p class="meta" id="meta"></p>
+
+  <section id="go" hidden>
+    <ol class="steps">
+      <li data-t="s1"></li>
+      <li data-t="s2"></li>
+      <li data-t="s3"></li>
+      <li data-t="s4"></li>
+    </ol>
+    <div class="row">
+      <button type="button" class="btn amber" id="connect" data-t="connect"></button>
+      <a class="sub" id="dl2" target="_blank" rel="noopener" hidden></a>
+    </div>
+    <div class="panel" id="panel" hidden>
+      <div class="prog"><div class="lbl"><span data-t="pdl"></span><span id="dlv"></span></div><div class="bar" id="dlb"><i></i></div></div>
+      <div class="prog"><div class="lbl"><span data-t="ppush"></span><span id="pushv"></span></div><div class="bar" id="pushb"><i></i></div></div>
+      <div id="status" aria-live="polite"></div>
+    </div>
+    <p class="note" data-t="note"></p>
+  </section>
+
+  <section id="fb" class="fallback" hidden>
+    <p id="fbwhy"></p>
+    <div class="row"><a class="btn" id="fbdl" target="_blank" rel="noopener"></a></div>
+    <p class="inst" id="fbinst"></p>
+  </section>
+
+  <section id="err" hidden><p id="errmsg" class="sub"></p></section>
+</main>
+
+<script type="module">
+const T = {
+  back: ["← Headset builds", "← Builds para casco"],
+  eyebrow: ["View in headset", "Ver en casco"],
+  s1: ["Plug the headset into <b>this computer</b> with a USB-C data cable and turn it on.", "Enchufá el casco a <b>esta computadora</b> con un cable USB-C de datos y prendelo."],
+  s2: ["Close SideQuest, Meta Quest Developer Hub, Unity or any adb running on this computer.", "Cerrá SideQuest, Meta Quest Developer Hub, Unity o cualquier adb que esté corriendo en esta compu."],
+  s3: ["Click <b>Connect</b> and choose the headset in Chrome's device list.", "Hacé clic en <b>Conectar</b> y elegí el casco en la lista de dispositivos de Chrome."],
+  s4: ["Put the headset on: accept <b>Allow USB debugging</b> and tick <b>Always allow from this computer</b>. When it's done the app opens by itself.", "Ponete el casco: aceptá <b>Permitir depuración USB</b> y marcá <b>Permitir siempre desde esta computadora</b>. Cuando termina, la app se abre sola."],
+  connect: ["Connect", "Conectar"],
+  pdl: ["Download", "Descarga"],
+  ppush: ["Copy to the headset and install", "Copia al casco e instalación"],
+  note: ["The first time, the headset needs Developer Mode on (Meta Horizon app → Devices → Developer Mode). Desktop Chrome or Edge only.", "La primera vez, el casco necesita el Modo desarrollador activado (app Meta Horizon → Dispositivos → Modo desarrollador). Solo Chrome o Edge de escritorio."],
+  dl: ["Download APK", "Bajar APK"],
+  notfound: ["This build is not in the hub, or it has no APK to send to the headset yet.", "Este build no está en el hub, o todavía no tiene un APK para mandar al casco."],
+  loadfail: ["Could not read the hub. Reload the page.", "No se pudo leer el hub. Recargá la página."],
+  fbphone: ["This only works from Chrome or Edge on a computer, with the headset plugged in by USB. From here, download the APK:", "Esto funciona solo desde Chrome o Edge en una computadora, con el casco enchufado por USB. Desde acá, bajá el APK:"],
+  wait: ["Waiting for the download to finish…", "Esperando que termine la descarga…"],
+  dlfail: ["The download failed. Check the connection and click Connect again.", "Falló la descarga. Revisá la conexión y volvé a hacer clic en Conectar."],
+  again: ["Install again", "Instalar de nuevo"],
+  ready: ["Ready: put the headset on.", "Listo: ponete el casco."],
+  nolaunch: ["Installed, but it did not open by itself: in the headset go to Library → Unknown sources.", "Instalado, pero no se abrió solo: en el casco andá a Biblioteca → Orígenes desconocidos."],
+};
+const lsGet = k => { try { return localStorage.getItem(k); } catch { return null; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, v); } catch {} };
+let lang = (() => { const q = new URLSearchParams(location.search).get("lang"), l = q || lsGet("opi.lang"); return l === "es" || l === "en" ? l : ((navigator.language || "").toLowerCase().startsWith("es") ? "es" : "en"); })();
+const t = k => T[k][lang === "es" ? 1 : 0];
+const $ = id => document.getElementById(id);
+const id = new URLSearchParams(location.search).get("id") || "";
+let x = null, X = null, blob = null, dlP = null, lastStatus = null, running = false;
+const MB = n => (n / 1048576).toFixed(0);
+
+function paint() {
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-t]").forEach(el => { el.innerHTML = el.tagName === "LI" ? "<span>" + t(el.dataset.t) + "</span>" : t(el.dataset.t); });
+  document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  if (x) {
+    const pick = k => lang === "es" ? (x[k + "_es"] || x[k + "_en"]) : (x[k + "_en"] || x[k + "_es"]);
+    $("title").textContent = pick("title") || x.id;
+    document.title = t("eyebrow") + " · " + (pick("title") || "OPI");
+    $("meta").textContent = [x.version, x.platform, x.size_mb ? x.size_mb + " MB" : ""].filter(Boolean).join(" · ");
+    const dlTxt = t("dl") + (x.size_mb ? " · " + x.size_mb + " MB" : "");
+    if (x.url) { $("dl2").href = $("fbdl").href = x.url; $("dl2").textContent = $("fbdl").textContent = dlTxt; $("dl2").hidden = false; }
+    else $("fbdl").hidden = true;
+    $("fbinst").textContent = pick("install") || "";
+    if (!$("fb").hidden && X) $("fbwhy").textContent = whyUnsupported();
+    if (lastStatus) say(lastStatus);
+    if (running === false && $("connect").dataset.done) $("connect").textContent = t("again");
+  }
+}
+document.querySelectorAll("[data-lang]").forEach(b => b.onclick = () => { lang = b.dataset.lang; lsSet("opi.lang", lang); paint(); });
+
+function say(m) {
+  lastStatus = m;
+  const el = $("status");
+  el.textContent = typeof m === "string" ? m : ((lang === "es" ? m.es : m.en) || m.en || "");
+  el.className = m && m.cls ? m.cls : "";
+}
+function bar(which, pct, label) {
+  const b = $(which + "b"), v = $(which + "v");
+  b.classList.toggle("ind", pct == null);
+  b.classList.toggle("done", pct === 100);
+  b.firstElementChild.style.width = pct == null ? "" : pct + "%";
+  v.textContent = label || "";
+}
+
+const isPhone = () => /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "") || (navigator.userAgentData && navigator.userAgentData.mobile);
+function whyUnsupported() {
+  if (/OculusBrowser|Quest/i.test(navigator.userAgent || "") || isPhone()) return t("fbphone");
+  const s = X.supported(true);
+  return (lang === "es" ? s.reason_es : s.reason) + " " + t("fbphone").split(". ").slice(1).join(". ");
+}
+
+// Download the APK from /apk/<key> into memory, with progress. Starts as soon as the page knows the build.
+function download() {
+  if (dlP) return dlP;
+  dlP = (async () => {
+    bar("dl", 0, "");
+    const res = await fetch("apk/" + encodeURIComponent(x.file));
+    if (!res.ok || !res.body) throw new Error("HTTP " + res.status);
+    const total = Number(res.headers.get("content-length")) || (x.size_mb || 0) * 1048576;
+    const rd = res.body.getReader(), parts = [];
+    let got = 0, last = 0;
+    for (;;) {
+      const { done, value } = await rd.read();
+      if (done) break;
+      parts.push(value); got += value.byteLength;
+      const now = performance.now();
+      if (now - last > 120) { last = now; bar("dl", total ? Math.min(99, Math.floor(got / total * 100)) : null, MB(got) + (total ? " / " + MB(total) : "") + " MB"); }
+    }
+    blob = new Blob(parts, { type: "application/vnd.android.package-archive" });
+    bar("dl", 100, MB(blob.size) + " MB");
+    return blob;
+  })();
+  dlP.catch(() => { dlP = null; bar("dl", 0, ""); });
+  return dlP;
+}
+
+async function connect() {
+  if (running) return;
+  running = true;
+  const btn = $("connect"); btn.disabled = true;
+  $("panel").hidden = false;
+  try {
+    // 1. Device first, while the click still counts as a user gesture (Chrome's device picker).
+    const ADB = { classCode: 0xff, subclassCode: 0x42, protocolCode: 1 };
+    const paired = (await navigator.usb.getDevices()).some(d => (d.configurations || []).some(c => (c.interfaces || []).some(i => (i.alternates || []).some(a => a.interfaceClass === 0xff && a.interfaceSubclass === 0x42 && a.interfaceProtocol === 1))));
+    if (!paired) {
+      say({ en: "Choose the headset in Chrome's list…", es: "Elegí el casco en la lista de Chrome…" });
+      try { await navigator.usb.requestDevice({ filters: [ADB] }); }
+      catch (e) {
+        throw { msg_en: "No headset selected. If it is not in the list: use a data USB-C cable, turn on Developer Mode, put the headset on once to wake it, and click Connect again.",
+                msg_es: "No elegiste ningún casco. Si no aparece en la lista: usá un cable USB-C de datos, activá el Modo desarrollador, ponete el casco una vez para despertarlo y volvé a hacer clic en Conectar." };
+      }
+    }
+    // 2. The APK.
+    if (!blob) {
+      say({ en: T.wait[0], es: T.wait[1] });
+      try { await download(); } catch (e) { throw { msg_en: T.dlfail[0] + " (" + (e.message || e) + ")", msg_es: T.dlfail[1] + " (" + (e.message || e) + ")" }; }
+    }
+    // 3. Push, install (-r -g) and launch via the hub's installer (pub/xr_install.js).
+    bar("push", 0, "");
+    const r = await X.installApk({
+      file: blob, pkg: x.pkg, grant: true,
+      onStatus: m => {
+        if (m.stage === "push") bar("push", m.pct == null ? null : Math.min(m.pct, 95), m.total ? MB(m.sent) + " / " + MB(m.total) + " MB" : "");
+        if (m.stage === "install" || m.stage === "launch") bar("push", 97, "");
+        say({ en: m.msg_en, es: m.msg_es });
+      },
+    });
+    bar("push", 100, r.device || "");
+    say(r.launched === false ? { en: T.nolaunch[0], es: T.nolaunch[1], cls: "ok" } : { en: T.ready[0] + (r.device ? " · " + r.device : ""), es: T.ready[1] + (r.device ? " · " + r.device : ""), cls: "ok" });
+    try { X.notifyReady(t("ready"), $("title").textContent); } catch {}
+    btn.dataset.done = "1";
+  } catch (e) {
+    say({ en: e.msg_en || e.message || String(e), es: e.msg_es || e.msg_en || e.message || String(e), cls: "bad" });
+    if (/busy/.test(e.code || "")) bar("push", 0, "");
+  } finally {
+    running = false; btn.disabled = false;
+    btn.textContent = btn.dataset.done ? t("again") : t("connect");
+  }
+}
+
+async function boot() {
+  paint();
+  try { X = await import("./xr_install.js"); } catch { $("err").hidden = false; $("errmsg").textContent = t("loadfail"); return; }
+  let rows;
+  try { const r = await fetch("builds.json", { cache: "no-store" }); rows = (await r.json()).map(d => ({ col: "experiments", id: d.id, data: d })); }
+  catch { $("err").hidden = false; $("errmsg").textContent = t("loadfail"); return; }
+  const row = rows.find(r => r.col === "experiments" && r.id === id && !r.deleted);
+  x = row && row.data;
+  if (!x) { $("title").textContent = id || "—"; $("err").hidden = false; $("errmsg").textContent = t("notfound"); return; }
+  paint();
+  const ok = X.supported() && !isPhone();
+  if (!ok || !x.file || !x.pkg) {
+    $("fb").hidden = false;
+    $("fbwhy").textContent = !ok ? whyUnsupported() : t("notfound");
+    return;
+  }
+  $("go").hidden = false;
+  $("connect").onclick = connect;
+  try { X.preload(); } catch {}
+  $("panel").hidden = false; say("");
+  download().catch(() => {});
+}
+boot();
+</script>
+</body>
+</html>

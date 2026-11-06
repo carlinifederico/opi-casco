@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>OPI · Builds para casco</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#07080a;--surface:#0f1114;--ink:#f3f1ec;--ink-2:#c4c8cf;--mute:#8b919b;--line:#272b32;--amber:#f4a340;
+  --ui:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--ui);margin:0;-webkit-font-smoothing:antialiased}
+main{max-width:860px;margin:0 auto;padding:40px 16px 64px}
+.eyebrow{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0 0 8px}
+h1{font-weight:400;font-size:30px;line-height:1.15;margin:0 0 6px}
+.lead{color:var(--ink-2);margin:0 0 28px;max-width:62ch}
+.card{display:grid;grid-template-columns:240px 1fr;gap:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:16px;margin-bottom:16px}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;background:#000}
+.card h2{font-weight:500;font-size:18px;line-height:1.3;margin:0 0 4px}
+.meta{color:var(--mute);font:12px var(--mono);margin:0 0 10px}
+.card p{color:var(--ink-2);margin:0 0 10px;font-size:14px}
+.card ul{margin:0 0 12px;padding-left:18px;color:var(--ink-2);font-size:13px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:8px 14px;font:500 14px var(--ui);text-decoration:none}
+.btn.amber{background:var(--amber);border-color:var(--amber);color:#1a1206;font-weight:600}
+.btn:hover{filter:brightness(1.08)}
+@media (max-width:640px){.card{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">OPI and the Quiet Ones · 3DAR</p>
+  <h1>Builds para casco</h1>
+  <p class="lead">Enchufá el Quest a la compu por USB-C y tocá <b>Ver en casco</b> (Chrome o Edge de escritorio). También podés bajar el APK e instalarlo con <code>adb install -r -g</code>.</p>
+  <div id="list"></div>
+</main>
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+fetch("builds.json", { cache: "no-store" }).then(r => r.json()).then(list => {
+  document.getElementById("list").innerHTML = list.map(b => `
+    <article class="card">
+      <img src="${esc(b.thumb)}" alt="" loading="lazy">
+      <div>
+        <h2>${esc(b.title_es || b.title_en)}</h2>
+        <p class="meta">${esc([b.date, b.version, b.platform, b.size_mb ? b.size_mb + " MB" : ""].filter(Boolean).join(" · "))}</p>
+        <p>${esc(b.desc_es || b.desc_en)}</p>
+        <ul>${(b.items_es || b.items_en || []).map(i => `<li>${esc(i)}</li>`).join("")}</ul>
+        <div class="row">
+          <a class="btn amber" href="casco.html?id=${encodeURIComponent(b.id)}">Ver en casco</a>
+          <a class="btn" href="${esc(b.url)}" download>Bajar APK</a>
+        </div>
+      </div>
+    </article>`).join("");
+});
+</script>
+</body>
+</html>
