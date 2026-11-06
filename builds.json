@@ -1,5 +1,39 @@
 [
  {
+  "id": "2026-11-06_s09_v4",
+  "date": "2026-11-06",
+  "scene": "S09",
+  "version": "v4",
+  "platform": "Quest 3",
+  "pkg": "com.threedar.opiseraphine.v3",
+  "file": "2026-11-06_OPI_Seraphine_S09_v4.apk",
+  "size_mb": 70.6,
+  "url": "apk/2026-11-06_OPI_Seraphine_S09_v4.apk",
+  "thumb": "thumbs/2026-11-06_s09_v4.webp",
+  "title_en": "Opi Seraphine v4: Seraphine walks in with the cake, set edges dissolve like a forming scan",
+  "title_es": "Opi Seraphine v4: Seraphine entra con la torta y los bordes del set se desarman como un scan que se forma",
+  "desc_en": "S09 turntable splat set whose extremes break into long, soft, fading splats while the core stays sharp, with vapor on top. Seraphine (re-made splat body, no cracked texture, cake box in her hands) forms in the hall doorway, walks to her mark, holds and dissolves, in a 12 s loop. Full VR / passthrough switch with room dimmer.",
+  "desc_es": "Set de S09 en splat desde el turntable: hacia los extremos se desarma en splats largos, borrosos y cada vez más transparentes, con el centro nítido y el vapor encima. Seraphine (cuerpo en splat rehecho, sin texturas agrietadas, con la caja de la torta en las manos) se forma en la puerta del pasillo, camina hasta su marca, se queda y se deshace, en loop de 12 s. Cambio VR / pass-through con atenuador de la sala.",
+  "items_en": [
+   "Wrist menu, Seraphine row: Walk in / Idle / Pause / Hide.",
+   "Right B: full VR / passthrough. Right A (in passthrough): room dimmer.",
+   "165,360 splats: Seraphine + cake 64,216, lamp halo 48, set 101,096."
+  ],
+  "items_es": [
+   "Menú de muñeca, fila Seraphine: Entra / Idle / Pausa / Oculta.",
+   "B derecho: VR completo / pass-through. A derecho (en pass-through): atenuador de la sala.",
+   "165.360 splats: Seraphine + torta 64.216, halo de lámpara 48, set 101.096."
+  ],
+  "issues_en": [
+   "Performance not yet measured with the headset worn; if it stutters, lower the set budget from the wrist menu."
+  ],
+  "issues_es": [
+   "El rendimiento todavía no se midió con el casco puesto; si se traba, bajá el presupuesto del set desde el menú de muñeca."
+  ],
+  "install_en": "Install with the Ver en casco button (WebUSB) or adb install -r -g. It replaces v3 (same app).",
+  "install_es": "Instalá con el botón Ver en casco (WebUSB) o adb install -r -g. Reemplaza a la v3 (misma app)."
+ },
+ {
   "id": "2026-11-06_s09_v3",
   "date": "2026-11-06",
   "scene": "S09",
