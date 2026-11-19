@@ -32,38 +32,6 @@
   "install_en": "Install with View in headset (WebUSB) or adb install -r -g. It replaces the previous maquette (same app)."
  },
  {
-  "id": "2026-11-19_s02m_v9",
-  "date": "2026-11-19",
-  "scene": "S02M",
-  "version": "v9",
-  "platform": "Quest 3",
-  "pkg": "com.threedar.opi.s02mmaquetazulma.quest",
-  "file": "2026-11-19_OPI_S02M_MaquetaZulma_v9.apk",
-  "size_mb": 47,
-  "url": "apk/2026-11-19_OPI_S02M_MaquetaZulma_v9.apk",
-  "thumb": "thumbs/2026-11-19_s02m_v9.webp",
-  "title_es": "Maqueta de Zulma en el subte v9: Zulma y Opi 3D, gente que camina",
-  "title_en": "Zulma's subway maquette v9: 3D Zulma and Opi, walking crowd",
-  "desc_es": "El blocking de 3 min con los modelos de Zulma y de Opi (rig de Fer) y gente de librería que camina por el andén. En el casco y en el navegador.",
-  "desc_en": "The 3-minute blocking with Zulma's and Opi's models (Fer's rig) and library people walking the platform. In the headset and in the browser.",
-  "items_es": [
-   "Personas de ~15 cm; la luz marca el ritmo de los 8 beats",
-   "Misma escena en la web: arrastrá para girar, Play, ±5 s y beats"
-  ],
-  "items_en": [
-   "People about 15 cm tall; light drives the rhythm of the 8 beats",
-   "Same scene on the web: drag to orbit, Play, ±5 s and beats"
-  ],
-  "issues_es": [
-   "No se probó en el casco: fps sin medir. Zulma y Opi posan por código; el set sigue en cajas"
-  ],
-  "issues_en": [
-   "Not tried in the headset: fps unmeasured. Zulma and Opi are posed by code; the set is still boxes"
-  ],
-  "install_es": "Instalá con Ver en casco (WebUSB) o adb install -r -g. Reemplaza a la maqueta anterior (misma app).",
-  "install_en": "Install with View in headset (WebUSB) or adb install -r -g. It replaces the previous maquette (same app)."
- },
- {
   "id": "2026-11-06_s09_v4",
   "date": "2026-11-06",
   "scene": "S09",
