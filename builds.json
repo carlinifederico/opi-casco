@@ -1,26 +1,26 @@
 [
  {
-  "id": "2026-11-19_s02m_v10",
+  "id": "2026-11-19_s02m_v11",
   "date": "2026-11-19",
   "scene": "S02M",
-  "version": "v10",
+  "version": "v11",
   "platform": "Quest 3",
   "pkg": "com.threedar.opi.s02mmaquetazulma.quest",
-  "file": "2026-11-19_OPI_S02M_MaquetaZulma_v10.apk",
-  "size_mb": 49.1,
-  "url": "apk/2026-11-19_OPI_S02M_MaquetaZulma_v10.apk",
+  "file": "2026-11-19_OPI_S02M_MaquetaZulma_v11.apk",
+  "size_mb": 76.7,
+  "url": "apk/2026-11-19_OPI_S02M_MaquetaZulma_v11.apk",
   "thumb": "thumbs/2026-11-19_s02m_v9.webp",
-  "title_es": "Maqueta de Zulma en el subte v10: con música, voiceover, ambiente y SFX",
-  "title_en": "Zulma's subway maquette v10: with music, voiceover, ambience and SFX",
-  "desc_es": "El blocking de 3 min con Zulma, Opi y la gente, ahora con la mezcla: música temporal, el voiceover B de Jorge, ambiente de estación y SFX en 3D.",
-  "desc_en": "The 3-minute blocking with Zulma, Opi and the crowd, now with the mix: temp music, Jorge's voiceover B, station ambience and 3D SFX.",
+  "title_es": "Maqueta de Zulma en el subte v11: gente de oficina como la ref, música a elegir",
+  "title_en": "Zulma's subway maquette v11: office crowd like the reference, choice of music",
+  "desc_es": "15 personas con ropa de oficina en tonos apagados; caminan en carriles ordenados y en B1–B2 se cierran alrededor de ella. Música 1 Haru / 2 Midwayer.",
+  "desc_en": "15 people in muted office clothes; they walk in ordered lanes and close round her in B1–B2. Music 1 Haru / 2 Midwayer.",
   "items_es": [
-   "Personas de ~15 cm; la luz marca el ritmo de los 8 beats",
-   "Misma escena en la web: arrastrá para girar, Play, ±5 s y beats"
+   "X (control izquierdo): cambia la música",
+   "Y: reinicia · B: pass-through"
   ],
   "items_en": [
-   "People about 15 cm tall; light drives the rhythm of the 8 beats",
-   "Same scene on the web: drag to orbit, Play, ±5 s and beats"
+   "X (left controller): switch music",
+   "Y: restart · B: passthrough"
   ],
   "issues_es": [
    "No se probó en el casco: fps sin medir. Zulma y Opi posan por código; el set sigue en cajas"
