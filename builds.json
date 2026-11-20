@@ -1,5 +1,37 @@
 [
  {
+  "id": "2026-11-20_s09_v4_aura",
+  "date": "2026-11-20",
+  "scene": "S09",
+  "version": "v4",
+  "platform": "XREAL Aura",
+  "pkg": "com.threedar.opiseraphine.aura",
+  "file": "2026-11-20_OPI_Seraphine_S09_v4_aura.apk",
+  "size_mb": 77.7,
+  "url": "apk/2026-11-20_OPI_Seraphine_S09_v4_aura.apk",
+  "thumb": "thumbs/2026-11-20_s09_v4_aura.webp",
+  "title_en": "Opi Seraphine v4 for Aura: Seraphine walks in with the cake, in mixed reality",
+  "title_es": "Opi Seraphine v4 para Aura: Seraphine entra con la torta, en mixed reality",
+  "desc_en": "The same v4 scene for the XREAL Aura: the black void turns transparent and the set with Seraphine floats in your room. Driven with your hands.",
+  "desc_es": "La misma escena v4 para las XREAL Aura: el vacío negro se vuelve transparente y el set con Seraphine queda flotando en tu cuarto. Se maneja con las manos.",
+  "items_en": [
+   "Wrist menu by hand: Walk in / Idle / Pause / Hide",
+   "Starts in mixed reality (the room is always visible)"
+  ],
+  "items_es": [
+   "Menú de muñeca con la mano: Entra / Idle / Pausa / Oculta",
+   "Arranca en mixed reality (la sala se ve siempre)"
+  ],
+  "issues_en": [
+   "Not tried on the Aura: performance unmeasured"
+  ],
+  "issues_es": [
+   "No se probó en las Aura: rendimiento sin medir"
+  ],
+  "install_en": "Connect the Aura over USB with debugging on and use View in headset (WebUSB), or adb install -r -g. Separate app from the Quest one.",
+  "install_es": "Conectá las Aura por USB con depuración activada y usá Ver en casco (WebUSB), o adb install -r -g. Es otra app: convive con la de Quest."
+ },
+ {
   "id": "2026-11-19_s02m_v11",
   "date": "2026-11-19",
   "scene": "S02M",
